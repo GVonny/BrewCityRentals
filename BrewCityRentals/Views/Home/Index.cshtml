@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Brew City Rentals | Home";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Brew City Rentals</h1>
+</div>
+
+<div class="accordion" id="options">
+    <div class="card">
+        <div class="card-header text-center" id="search-heading">
+            <a class="btn" data-toggle="collapse" data-target="#search-partial" aria-expanded="true" aria-controls="search-partial">
+                <h2 class="margin-0-auto">Search</h2>
+            </a>
+        </div>
+
+        <div id="search-partial" class="collapse" aria-labelledby="search-heading" data-parent="#options">
+            <div class="card-body padding-left padding-right padding-bottom">
+                @Html.Partial("SearchPartial")
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header text-center" id="checkout-heading">
+            <a class="btn collapsed" data-toggle="collapse" data-target="#checkout-partial" aria-expanded="false" aria-controls="checkout-partial">
+                <h2 class="margin-0-auto">Checkout</h2>
+            </a>
+        </div>
+        <div id="checkout-partial" class="collapse" aria-labelledby="checkout-heading" data-parent="#options">
+            <div class="card-body">
+                @Html.Partial("CheckoutPartial")
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header text-center" id="return-heading">
+            <a class="btn collapsed" data-toggle="collapse" data-target="#return-partial" aria-expanded="false" aria-controls="return-partial">
+                <h2 class="margin-0-auto">Returns</h2>
+            </a>
+        </div>
+        <div id="return-partial" class="collapse" aria-labelledby="return-heading" data-parent="#options">
+            <div class="card-body">
+                @Html.Partial("ReturnPartial")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+    $(function () {
+    });
+    </script>
+}
