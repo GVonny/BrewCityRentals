@@ -11,20 +11,28 @@ namespace BrewCityRentals.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            IndexModel model = new IndexModel()
+            {
+                Movie = new Movie
+                {
+                    Genres = new GenreList().GetGenres(),
+                },
+            };
+
+            return View(model);
         }
 
-        public ActionResult SearchResults(Movie movie)
+        public ActionResult SearchResults(List<Movie> movies)
         {
-            return View(movie);
+            return View(movies);
         }
 
         [HttpPost]
         public ActionResult Search(Movie movie)
         {
+            List<Movie> movies = new List<Movie>();
 
-
-            return RedirectToAction("SearchResult", routeValues: new { movie });
+            return RedirectToAction("SearchResult", routeValues: new { movies });
         }
     }
 }

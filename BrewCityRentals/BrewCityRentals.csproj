@@ -125,6 +125,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contants.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,9 +165,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\SearchPartial.cshtml" />
-    <Content Include="Views\Home\CheckoutPartial.cshtml" />
-    <Content Include="Views\Home\ReturnPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
