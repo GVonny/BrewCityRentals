@@ -1,0 +1,36 @@
+﻿@model BrewCityRentals.Models.SearchModel
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search Results</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Quantity Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.Movies)
+        {
+            <tr id="@movie.MovieID">
+                <td>@movie.Title</td>
+                <td>
+                    @foreach(var genre in Model.Genres)
+                    {
+                        if(movie.GenreID == genre.GenreID)
+                        {
+                            @genre.GenreName
+                        }
+                    }
+                </td>
+                <td>@movie.QuantityAvailabe</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a onclick="window.history.back()" class="btn btn-warning">Return</a>

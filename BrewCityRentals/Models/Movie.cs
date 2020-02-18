@@ -27,4 +27,33 @@ namespace BrewCityRentals.Models
         [NotMapped]
         public List<Genre> Genres { get; set; }
     }
+
+    public class MovieList
+    {
+        public MovieList() { }
+
+        public List<Movie> GetMovies()
+        {
+            List<Movie> Movies = new List<Movie>()
+            {
+                new Movie { MovieID = Guid.NewGuid(), GenreID = new Guid("1994ea36-1acf-4dcb-8b27-aa108b649f9d"), MovieCode = 1234, Title = "Movie 1", Rating = "R", QuantityAvailabe = 5, ReleaseDate = DateTime.Now.AddDays(-283) },
+            };
+            return Movies;
+        }
+
+        public List<Movie> SearchMovies(Movie Movie)
+        {
+            List<Movie> AllMovies = GetMovies();
+            List<Movie> Movies = new List<Movie>();
+
+            foreach(var movie in AllMovies)
+            {
+                if((movie.GenreID == Movie.GenreID) || !movie.Title.Contains(Movie.Title))
+                {
+                    Movies.Add(movie);
+                }
+            }
+            return Movies;
+        }
+    }
 }

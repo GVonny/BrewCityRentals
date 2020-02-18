@@ -22,17 +22,19 @@ namespace BrewCityRentals.Controllers
             return View(model);
         }
 
-        public ActionResult SearchResults(List<Movie> movies)
-        {
-            return View(movies);
-        }
 
-        [HttpPost]
-        public ActionResult Search(Movie movie)
+        public ActionResult Search(Movie Movie)
         {
-            List<Movie> movies = new List<Movie>();
+            SearchModel model = new SearchModel();
 
-            return RedirectToAction("SearchResult", routeValues: new { movies });
+            MovieList movieList = new MovieList();
+            List<Movie> Movies = movieList.SearchMovies(Movie);
+            model.Movies = Movies;
+
+            GenreList genreList = new GenreList();
+            model.Genres = genreList.GetGenres();
+            
+            return View(model);
         }
     }
 }
