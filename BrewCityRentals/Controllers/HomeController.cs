@@ -13,10 +13,7 @@ namespace BrewCityRentals.Controllers
         {
             IndexModel model = new IndexModel()
             {
-                Movie = new Movie
-                {
-                    Genres = new GenreList().GetGenres(),
-                },
+                Genres = new GenreList().GetGenres(),
             };
 
             return View(model);

@@ -8,5 +8,7 @@ namespace BrewCityRentals.Models
     public class IndexModel
     {
         public Movie Movie { get; set; }
+
+        public List<Genre> Genres { get; set; }
     }
 }
