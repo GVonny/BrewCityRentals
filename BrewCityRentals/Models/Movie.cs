@@ -48,7 +48,7 @@ namespace BrewCityRentals.Models
 
             foreach(var movie in AllMovies)
             {
-                if((movie.GenreID == Movie.GenreID) || !movie.Title.Contains(Movie.Title))
+                if((movie.GenreID == Movie.GenreID) || movie.Title.Contains(Movie.Title))
                 {
                     Movies.Add(movie);
                 }
