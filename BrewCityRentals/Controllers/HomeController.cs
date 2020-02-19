@@ -19,7 +19,7 @@ namespace BrewCityRentals.Controllers
             return View(model);
         }
 
-
+        [HttpPost]
         public ActionResult Search(Movie Movie)
         {
             SearchModel model = new SearchModel();

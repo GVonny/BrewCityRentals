@@ -18,8 +18,10 @@
 
         <div id="search-partial" class="collapse" aria-labelledby="search-heading" data-parent="#options">
             <div class="card-body padding-left padding-right padding-bottom">
-                <h2>Search Movies</h2>
-                <form action="/Home/Search">
+                <div class="row">
+                    <h2 class="col-md-offset-2 col-md-3">Search Movies</h2>
+                </div>
+                <form action="/Home/Search" method="post">
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -38,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-9 col-md-2">
-                                <input class="btn btn-primary" type="submit" value="Search"/>
+                                <input class="btn btn-warning" type="submit" value="Search"/>
                             </div>
                         </div>
                         
