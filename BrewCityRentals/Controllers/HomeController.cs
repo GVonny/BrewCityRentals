@@ -22,16 +22,21 @@ namespace BrewCityRentals.Controllers
         [HttpPost]
         public ActionResult Search(Movie Movie)
         {
-            SearchModel model = new SearchModel();
+            if(!string.IsNullOrWhiteSpace(Movie.Title) || Movie.GenreID != Guid.Empty || Movie.SearchStartDate != null || Movie.SearchEndDate != null)
+            {
+                SearchModel model = new SearchModel();
 
-            MovieList movieList = new MovieList();
-            List<Movie> Movies = movieList.SearchMovies(Movie);
-            model.Movies = Movies;
+                MovieList movieList = new MovieList();
+                List<Movie> Movies = movieList.SearchMovies(Movie);
+                model.Movies = Movies;
 
-            GenreList genreList = new GenreList();
-            model.Genres = genreList.GetGenres();
+                GenreList genreList = new GenreList();
+                model.Genres = genreList.GetGenres();
+
+                return View(model);
+            }
+            return View(new SearchModel() { Movies = new List<Movie>() } );
             
-            return View(model);
         }
     }
 }

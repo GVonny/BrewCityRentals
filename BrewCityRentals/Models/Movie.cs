@@ -26,6 +26,13 @@ namespace BrewCityRentals.Models
 
         [NotMapped]
         public List<Genre> Genres { get; set; }
+
+        [NotMapped]
+        public DateTime SearchStartDate { get; set; }
+
+        [NotMapped]
+        public DateTime SearchEndDate { get; set; }
+
     }
 
     public class MovieList
@@ -36,7 +43,7 @@ namespace BrewCityRentals.Models
         {
             List<Movie> Movies = new List<Movie>()
             {
-                new Movie { MovieID = Guid.NewGuid(), GenreID = new Guid("1994ea36-1acf-4dcb-8b27-aa108b649f9d"), MovieCode = 1234, Title = "Movie 1", Rating = "R", QuantityAvailabe = 5, ReleaseDate = DateTime.Now.AddDays(-283) },
+                new Movie { MovieID = Guid.NewGuid(), GenreID = new Guid("1994ea36-1acf-4dcb-8b27-aa108b649f9d"), MovieCode = 1234, Title = "Movie 1", Rating = "R", QuantityAvailabe = 5, ReleaseDate = DateTime.Now},
             };
             return Movies;
         }
@@ -46,13 +53,21 @@ namespace BrewCityRentals.Models
             List<Movie> AllMovies = GetMovies();
             List<Movie> Movies = new List<Movie>();
 
-            foreach(var movie in AllMovies)
+            Movies = AllMovies.Where(x => x.GenreID == Movie.GenreID || x.Title.Contains(Movie.Title)).ToList();
+
+            if(Movie.SearchStartDate != DateTime.MinValue && Movie.SearchEndDate != DateTime.MinValue)
             {
-                if((movie.GenreID == Movie.GenreID) || movie.Title.Contains(Movie.Title))
-                {
-                    Movies.Add(movie);
-                }
+                Movies = Movies.Where(x => x.ReleaseDate >= Movie.SearchStartDate && x.ReleaseDate <= Movie.SearchEndDate).ToList();
             }
+            else if(Movie.SearchStartDate != DateTime.MinValue)
+            {
+                Movies = Movies.Where(x => x.ReleaseDate >= Movie.SearchStartDate ).ToList();
+            }
+            else if(Movie.SearchEndDate != DateTime.MinValue)
+            {
+                Movies = Movies.Where(x => x.ReleaseDate <= Movie.SearchEndDate).ToList();
+            }
+
             return Movies;
         }
     }

@@ -14,22 +14,32 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model.Movies)
+        @if (Model.Movies.Count > 0)
         {
-            <tr id="@movie.MovieID">
-                <td>@movie.Title</td>
-                <td>
-                    @foreach(var genre in Model.Genres)
-                    {
-                        if(movie.GenreID == genre.GenreID)
+            foreach (var movie in Model.Movies)
+            {
+                <tr id="@movie.MovieID">
+                    <td>@movie.Title</td>
+                    <td>
+                        @foreach (var genre in Model.Genres)
                         {
-                            @genre.GenreName
+                            if (movie.GenreID == genre.GenreID)
+                            {
+                                @genre.GenreName
+                            }
                         }
-                    }
-                </td>
-                <td>@movie.QuantityAvailabe</td>
+                    </td>
+                    <td>@movie.QuantityAvailabe</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">No results.</td>
             </tr>
         }
+
     </tbody>
 </table>
 
