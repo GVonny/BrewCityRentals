@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +14,7 @@ namespace BrewCityRentals.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             IndexModel model = new IndexModel()
@@ -28,7 +31,7 @@ namespace BrewCityRentals.Controllers
             if(!string.IsNullOrWhiteSpace(Movie.Title) || Movie.GenreID != Guid.Empty || Movie.SearchStartDate != null || Movie.SearchEndDate != null)
             {
                 SearchModel model = new SearchModel();
-
+                
                 MovieList movieList = new MovieList();
                 List<Movie> Movies = movieList.SearchMovies(Movie);
                 model.Movies = Movies;

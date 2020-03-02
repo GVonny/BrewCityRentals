@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +16,7 @@ namespace BrewCityRentals.Models
         [DisplayName("Genre")]
         public Guid GenreID { get; set; }
 
-        public int MovieCode { get; set; }
+        public string MovieCode { get; set; }
 
         public string Title { get; set; }
 
@@ -43,7 +45,7 @@ namespace BrewCityRentals.Models
         {
             List<Movie> Movies = new List<Movie>()
             {
-                new Movie { MovieID = Guid.NewGuid(), GenreID = new Guid("1994ea36-1acf-4dcb-8b27-aa108b649f9d"), MovieCode = 1234, Title = "Movie 1", Rating = "R", QuantityAvailabe = 5, ReleaseDate = DateTime.Now},
+                new Movie { MovieID = Guid.NewGuid(), GenreID = new Guid("1994ea36-1acf-4dcb-8b27-aa108b649f9d"), MovieCode = "1234", Title = "Movie 1", Rating = "R", QuantityAvailabe = 5, ReleaseDate = DateTime.Now},
             };
             return Movies;
         }

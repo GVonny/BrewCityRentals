@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BrewCityRentals.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=tcp:brew-city-rentals.database.windows.net,1433;Initial Catalog=BrewCityRentals;Persist Security Info=False;User ID=vonhade4;Password=Arthur1200;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
