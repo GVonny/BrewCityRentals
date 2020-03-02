@@ -53,7 +53,15 @@ namespace BrewCityRentals.Models
             List<Movie> AllMovies = GetMovies();
             List<Movie> Movies = new List<Movie>();
 
-            Movies = AllMovies.Where(x => x.GenreID == Movie.GenreID || x.Title.Contains(Movie.Title)).ToList();
+            if (Movie.GenreID != Guid.Empty || Movie.Title != null)
+            {
+                Movies = AllMovies.Where(x => x.GenreID == Movie.GenreID || x.Title.Contains(Movie.Title)).ToList();
+            }
+            else
+            {
+                Movies = AllMovies;
+            }
+           
 
             if(Movie.SearchStartDate != DateTime.MinValue && Movie.SearchEndDate != DateTime.MinValue)
             {
@@ -61,7 +69,7 @@ namespace BrewCityRentals.Models
             }
             else if(Movie.SearchStartDate != DateTime.MinValue)
             {
-                Movies = Movies.Where(x => x.ReleaseDate >= Movie.SearchStartDate ).ToList();
+                Movies = Movies.Where(x => x.ReleaseDate >= Movie.SearchStartDate).ToList();
             }
             else if(Movie.SearchEndDate != DateTime.MinValue)
             {
